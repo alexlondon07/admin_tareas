@@ -16,7 +16,6 @@ angular.module('appTareas', ['ui.router'])
     })
     .factory('comun', function() {
         var comun = {}
-
         comun.tareas = [{
             nombre: 'Comprar comida',
             prioridad: '1'
