@@ -1,33 +1,33 @@
 <form>
-    <h3>Agrega una nueva tarea</h3>
-    <div class="has-feedback">
-        <input type="text" class="form-control" placeholder="Tarea a realizar" ng-model="tarea.nombre"> </input>
-        <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
-    </div>
-    <div>
-        <span class="glyphicon glyphicon-time"></span>&nbsp;<span class="lead prioridad">Elige la prioridad:</span>
-        <label class="radio-inline">
-            <input type="radio" ng-model="tarea.prioridad" value="0"> Baja
-        </label>
-        <label class="radio-inline">
-            <input type="radio" ng-model="tarea.prioridad" value="1"> Normal
-        </label>
-        <label class="radio-inline">
-            <input type="radio" ng-model="tarea.prioridad" value="2"> Alta
-        </label>
-    </div>
-    <button type="submit" class="btn btn-success" ng-click="agregar()">Agregar</button>
+  <h3>Add new task to list</h3>
+  <div class="has-feedback">
+    <input type="text" class="form-control" placeholder="Tarea a realizar" ng-model="task.name"> </input>
+    <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
+  </div>
+  <div>
+    <span class="glyphicon glyphicon-time"></span>&nbsp;<span class="lead priority">Choose priority:</span>
+    <label class="radio-inline">
+      <input type="radio" ng-model="task.priority" value="0"> Low
+    </label>
+    <label class="radio-inline">
+      <input type="radio" ng-model="task.priority" value="1"> Normal
+    </label>
+    <label class="radio-inline">
+      <input type="radio" ng-model="task.priority" value="2"> High
+    </label>
+  </div>
+  <button type="submit" class="btn btn-success" ng-click="add()">Add task</button>
 </form>
 <div class="todoList bg-info">
-    <h4>Tareas registradas</h4>
-    <div class="item" ng-repeat="tarea in tareas | orderBy:'-prioridad'">
-        <span class="glyphicon glyphicon-circle-arrow-up" ng-hide="tarea.prioridad==2" ng-click="masPrioridad(tarea)"></span>
-        <span class="glyphicon glyphicon-circle-arrow-down" ng-hide="tarea.prioridad==0" ng-click="menosPrioridad(tarea)"></span>
-        <span class="prioridad">Prioridad: {{prioridades[tarea.prioridad]}}</span> |
-        <span>
-            <a href="#"> Tarea: {{tarea.nombre}} </a> 
-            <span class="glyphicon glyphicon-edit text-warning" ng-click="procesaObjeto(tarea)"></span>
-        <span class="glyphicon glyphicon-remove text-danger" ng-click="eliminar(tarea)"></span>
-        </span>
-    </div>
+  <h4>Tasks registered</h4>
+  <div class="item" ng-repeat="task in tasks | orderBy:'-priority'">
+    <span title="More priority" class="glyphicon glyphicon-circle-arrow-up" ng-hide="task.priority==2" ng-click="morePriority(task)"></span>
+    <span title="Less priority"  class="glyphicon glyphicon-circle-arrow-down" ng-hide="task.priority==0" ng-click="lessPriority(task)"></span>
+    <span class="priority">Prioridad: {{priorityes[task.priority]}}</span> |
+    <span>
+      <a href="#"> Task: {{task.name}} </a>
+      <span class="glyphicon glyphicon-edit text-warning" ng-click="procesaObjeto(task)"></span>
+      <span class="glyphicon glyphicon-remove text-danger" ng-click="delete(task)"></span>
+    </span>
+  </div>
 </div>

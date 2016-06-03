@@ -16,52 +16,54 @@ angular.module('appTareas', ['ui.router'])
     })
     .factory('comun', function() {
         var comun = {}
-        comun.tareas = [{
-            nombre: 'Comprar comida',
-            prioridad: '1'
+        comun.tasks = [{
+            name: 'Comprar comida',
+            priority: '1'
         }, {
-            nombre: 'Pasear al perro',
-            prioridad: '2'
+            name: 'Pasear al perro',
+            priority: '2'
         }, {
-            nombre: 'Ir al cine',
-            prioridad: '0'
+            name: 'Ir al cine',
+            priority: '0'
         }]
 
-        comun.eliminar = function(tarea) {
-            var indice = comun.tareas.indexOf(tarea);
-            comun.tareas.splice(indice, 1);
+        //Metodo comun en nuestra Aplicacion
+        comun.delete = function(task) {
+            var indice = comun.tasks.indexOf(task);
+            comun.tasks.splice(indice, 1);
         }
-
         return comun;
     })
     .controller('ctrlAlta', function($scope, $state, comun) {
-        $scope.tarea = {}
-            // $scope.tareas = [];
+        $scope.task = {}
+        $scope.tasks = comun.tasks;
 
-        $scope.tareas = comun.tareas;
+        $scope.priorityes = ['Low', 'Normal', 'High'];
 
-        $scope.prioridades = ['Baja', 'Normal', 'Alta'];
-
-        $scope.agregar = function() {
-            $scope.tareas.push({
-                nombre: $scope.tarea.nombre,
-                prioridad: parseInt($scope.tarea.prioridad)
+        //Metodo para Agregar una task Nueva
+        $scope.add = function() {
+            $scope.tasks.push({
+                name: $scope.task.name,
+                priority: parseInt($scope.task.priority)
             })
 
-            $scope.tarea.nombre = '';
-            $scope.tarea.prioridad = '';
+            $scope.task.name = '';
+            $scope.task.priority = '';
         }
 
-        $scope.masPrioridad = function(tarea) {
-            tarea.prioridad += 1;
+        //More priority
+        $scope.morePriority = function(task) {
+            task.priority += 1;
         }
 
-        $scope.menosPrioridad = function(tarea) {
-            tarea.prioridad -= 1;
+        //Less priority
+        $scope.lessPriority = function(task) {
+            task.priority -= 1;
         }
 
-        $scope.eliminar = function(tarea) {
-            comun.eliminar(tarea)
+        //Delete one task
+        $scope.delete = function(task) {
+            comun.delete(task)
         }
 
     })
