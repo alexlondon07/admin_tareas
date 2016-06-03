@@ -27,6 +27,8 @@ angular.module('appTareas', ['ui.router'])
             priority: '0'
         }]
 
+        comun.task = {};
+
         //Metodo comun en nuestra Aplicacion
         comun.delete = function(task) {
             var indice = comun.tasks.indexOf(task);
@@ -40,7 +42,7 @@ angular.module('appTareas', ['ui.router'])
 
         $scope.priorityes = ['Low', 'Normal', 'High'];
 
-        //Metodo para Agregar una task Nueva
+        //function add new task for my list
         $scope.add = function() {
             $scope.tasks.push({
                 name: $scope.task.name,
@@ -63,10 +65,29 @@ angular.module('appTareas', ['ui.router'])
 
         //Delete one task
         $scope.delete = function(task) {
-            comun.delete(task)
+            comun.delete(task);
+        }
+
+        //Process Object for Edit
+        $scope.processObject = function(task){
+          comun.task = task;
+          $state.go('editar');
         }
 
     })
     .controller('ctrlEditar', function($scope, $state, comun) {
+        $scope.task = comun.task;
 
+        //function for edit task
+        $scope.update = function(){
+          var position = comun.tasks.indexOf(comun.task);
+          comun.tasks[position] = $scope.task;
+          $state.go('alta');
+        }
+
+        //function delete task
+        $scope.delete =function(){
+          comun.delete($scope.task);
+          $state.go('alta');
+        }
     })
