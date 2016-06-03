@@ -44,13 +44,16 @@ angular.module('appTareas', ['ui.router'])
 
         //function add new task for my list
         $scope.add = function() {
-            $scope.tasks.push({
-                name: $scope.task.name,
-                priority: parseInt($scope.task.priority)
-            })
-
-            $scope.task.name = '';
-            $scope.task.priority = '';
+            //Validate fields
+            if($scope.task.name == "" || $scope.task.name =='undefined'){
+              $scope.tasks.push({
+                  name: $scope.task.name,
+                  priority: parseInt($scope.task.priority)
+              })
+              //Empty fields
+              $scope.task.name = '';
+              $scope.task.priority = '';
+            }
         }
 
         //More priority

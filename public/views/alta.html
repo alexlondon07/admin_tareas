@@ -1,19 +1,19 @@
 <form>
   <h3>Add new task to list</h3>
   <div class="has-feedback">
-    <input type="text" class="form-control" placeholder="Tarea a realizar" ng-model="task.name"> </input>
+    <input type="text" class="form-control" placeholder="Task to be performed " required ng-model="task.name"> </input>
     <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
   </div>
   <div>
     <span class="glyphicon glyphicon-time"></span>&nbsp;<span class="lead priority">Choose priority:</span>
     <label class="radio-inline">
-      <input type="radio" ng-model="task.priority" value="0"> Low
+      <input type="radio" ng-model="task.priority" value="0" required> Low
     </label>
     <label class="radio-inline">
-      <input type="radio" ng-model="task.priority" value="1"> Normal
+      <input type="radio" ng-model="task.priority" value="1" required> Normal
     </label>
     <label class="radio-inline">
-      <input type="radio" ng-model="task.priority" value="2"> High
+      <input type="radio" ng-model="task.priority" value="2" required> High
     </label>
   </div>
   <button type="submit" class="btn btn-success" ng-click="add()">Add task</button>
