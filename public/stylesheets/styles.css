@@ -2,6 +2,13 @@ body {
     padding-top: 50px;
 }
 
+input.ng-invalid {
+    background-color: pink;
+}
+input.ng-valid {
+    background-color: lightgreen;
+}
+
 .container {
     background-color: #f2f2f2;
     border: 1px solid #ccc;

@@ -45,7 +45,7 @@ angular.module('appTareas', ['ui.router'])
         //function add new task for my list
         $scope.add = function() {
             //Validate fields
-            if($scope.task.name == "" || $scope.task.name =='undefined'){
+            //if($scope.task.name != "" || $scope.task.name !='undefined' || $scope.task.priority !='undefined' || $scope.task.priority !=""){
               $scope.tasks.push({
                   name: $scope.task.name,
                   priority: parseInt($scope.task.priority)
@@ -53,7 +53,7 @@ angular.module('appTareas', ['ui.router'])
               //Empty fields
               $scope.task.name = '';
               $scope.task.priority = '';
-            }
+            //}
         }
 
         //More priority
@@ -76,6 +76,18 @@ angular.module('appTareas', ['ui.router'])
           comun.task = task;
           $state.go('editar');
         }
+
+
+        $scope.option = [{
+          name: "Low",
+          value: 0,
+        },{
+          name: "Normal",
+          value: 1,
+        },{
+          name: "High",
+          value: 2,
+        }];
 
     })
     .controller('ctrlEditar', function($scope, $state, comun) {
