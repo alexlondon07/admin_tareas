@@ -5,6 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//Conexion with MongoDB
+var mongoose = require('mongoose');
+//Add schema the my model of bd
+require('.model/Tasks');
+mongoose.connect('mongodb://localhost/tasks');
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
