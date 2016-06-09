@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 
 //Conexion with MongoDB
 var mongoose = require('mongoose');
-//Add schema the my model of bd
+//Add schema the my Models to database in MongoDB
 require('.model/Tasks');
+//Name database is tasks MongoDB
 mongoose.connect('mongodb://localhost/tasks');
 
 
