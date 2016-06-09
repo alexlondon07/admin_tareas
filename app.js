@@ -7,11 +7,10 @@ var bodyParser = require('body-parser');
 
 //Conexion with MongoDB
 var mongoose = require('mongoose');
-//Add schema the my Models to database in MongoDB
-require('.model/Tasks');
 //Name database is tasks MongoDB
 mongoose.connect('mongodb://localhost/tasks');
-
+//Add schema the my Models to database in MongoDB
+require('./models/Tasks');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
