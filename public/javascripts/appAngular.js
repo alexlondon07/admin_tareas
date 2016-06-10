@@ -45,6 +45,15 @@ angular.module('appTareas', ['ui.router'])
            })
          }
 
+         //Update task
+         comun.update = function(task){
+           return $http.put('/task/' + task._id, task)
+           .success(function(data){
+             var index = comun.tasks.indexOf(task);
+             comun.tasks[index] = data;//Update datas
+           })
+         }
+
         return comun;
     })
     .controller('ctrlAlta', function($scope, $state, comun) {
@@ -107,8 +116,7 @@ angular.module('appTareas', ['ui.router'])
 
         //function for edit task
         $scope.update = function(){
-          var position = comun.tasks.indexOf(comun.task);
-          comun.tasks[position] = $scope.task;
+          comun.update($scope.task);
           $state.go('alta');
         }
 
