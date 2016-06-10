@@ -33,8 +33,15 @@ angular.module('appTareas', ['ui.router'])
            return $http.get('/tasks')
            .success(function(data){
              angular.copy(data, comun.tasks)
-             comun.tasks = data;
+
              return comun.tasks;
+           })
+         }
+         //Add Task
+         comun.add = function(task){
+           return $http.post('/task', task)
+           .success(function(task){
+             comun.tasks.push(task);
            })
          }
 
@@ -52,7 +59,7 @@ angular.module('appTareas', ['ui.router'])
         //function add new task for my list
         $scope.add = function() {
             //Validate fields
-              $scope.tasks.push({
+            comun.add({
                   name: $scope.task.name,
                   priority: parseInt($scope.task.priority)
               })
