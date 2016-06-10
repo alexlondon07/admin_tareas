@@ -20,12 +20,6 @@ angular.module('appTareas', ['ui.router'])
 
         comun.task = {};
 
-        //Metodo comun en nuestra Aplicacion
-        comun.delete = function(task) {
-            var indice = comun.tasks.indexOf(task);
-            comun.tasks.splice(indice, 1);
-        }
-
         /**
          * Remote methods section
          */
@@ -51,6 +45,15 @@ angular.module('appTareas', ['ui.router'])
            .success(function(data){
              var index = comun.tasks.indexOf(task);
              comun.tasks[index] = data;//Update datas
+           })
+         }
+
+         //Delete task
+         comun.delete = function(task){
+           return $http.delete('/task/' + task._id)
+           .success(function(){
+             var index = comun.tasks.indexOf(task);
+             comun.tasks.splice(index, 1);
            })
          }
 
