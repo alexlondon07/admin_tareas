@@ -14,8 +14,8 @@ angular.module('appTareas', ['ui.router'])
 
         $urlRouterProvider.otherwise('alta');
     })
-    .factory('comun', function() {
-        var comun = {}
+    .factory('comun', function($http) {
+        var comun = {} 
         comun.tasks = [{
             name: 'Comprar comida',
             priority: '1'
@@ -26,6 +26,7 @@ angular.module('appTareas', ['ui.router'])
             name: 'Ir al cine',
             priority: '0'
         }]
+
 
         comun.task = {};
 
@@ -45,7 +46,6 @@ angular.module('appTareas', ['ui.router'])
         //function add new task for my list
         $scope.add = function() {
             //Validate fields
-            //if($scope.task.name != "" || $scope.task.name !='undefined' || $scope.task.priority !='undefined' || $scope.task.priority !=""){
               $scope.tasks.push({
                   name: $scope.task.name,
                   priority: parseInt($scope.task.priority)
@@ -53,7 +53,6 @@ angular.module('appTareas', ['ui.router'])
               //Empty fields
               $scope.task.name = '';
               $scope.task.priority = '';
-            //}
         }
 
         //More priority
