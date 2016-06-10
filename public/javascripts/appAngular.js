@@ -25,7 +25,7 @@ angular.module('appTareas', ['ui.router'])
         }, {
             name: 'Ir al cine',
             priority: '0'
-        }]
+        }];
 
 
         comun.task = {};
