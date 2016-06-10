@@ -16,17 +16,7 @@ angular.module('appTareas', ['ui.router'])
     })
     .factory('comun', function($http) {
         var comun = {} 
-        comun.tasks = [{
-            name: 'Comprar comida',
-            priority: '1'
-        }, {
-            name: 'Pasear al perro',
-            priority: '2'
-        }, {
-            name: 'Ir al cine',
-            priority: '0'
-        }];
-
+        comun.tasks = [];
 
         comun.task = {};
 
@@ -35,10 +25,26 @@ angular.module('appTareas', ['ui.router'])
             var indice = comun.tasks.indexOf(task);
             comun.tasks.splice(indice, 1);
         }
+
+        /**
+         * Remote methods section
+         */
+         comun.getAll = function(){
+           return $http.get('/tasks')
+           .success(function(data){
+             angular.copy(data, comun.tasks)
+             comun.tasks = data;
+             return comun.tasks;
+           })
+         }
+
         return comun;
     })
     .controller('ctrlAlta', function($scope, $state, comun) {
         $scope.task = {}
+
+        comun.getAll();
+
         $scope.tasks = comun.tasks;
 
         $scope.priorityes = ['Low', 'Normal', 'High'];
