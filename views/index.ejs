@@ -1,22 +1,28 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <title>Administrator of tasks</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="javascripts/appAngular.js"></script>
+  <meta charset="utf-8" />
+  <title>Administrator of tasks</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="javascripts/appAngular.js"></script>
 </head>
 
 <body ng-app="appTareas">
-    <div class="page-header">
-        <h1>Administrator of tasks - MEAN - MondoBD, ExpressJS, Angularjs, NodeJS </h1>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Administrator of tasks - MEAN </h1>
+      <p>MongoBD, ExpressJS, Angularjs, NodeJS</p>
+      <h4>Alexander Londoño Espejo</h4>
+       <!-- <p><a href="#tecnologies" class="btn btn-primary btn-lg" role="button">Technologies worked</a></p> -->
     </div>
-    <div class="container col-md-6 col-md-offset-3">
-        <ui-view></ui-view>
-    </div>
+  </div>
+  <div class="container col-md-6 col-md-offset-3">
+    <!-- Load my view the app -->
+    <ui-view></ui-view>
+  </div>
 </body>
 
 </html>

@@ -12,6 +12,7 @@ angular.module('appTareas', ['ui.router'])
                 controller: 'ctrlEditar'
             });
 
+        //If you didn't find any State
         $urlRouterProvider.otherwise('alta');
     })
     .factory('comun', function($http) {
@@ -21,7 +22,9 @@ angular.module('appTareas', ['ui.router'])
         comun.task = {};
 
         /**
-         * Remote methods section
+         * Remote methods section API REST FULL
+         * Method GET
+         * http://localhost:3000/tasks
          */
          comun.getAll = function(){
            return $http.get('/tasks')
@@ -31,7 +34,12 @@ angular.module('appTareas', ['ui.router'])
              return comun.tasks;
            })
          }
-         //Add Task
+
+         /**
+          * Method Add Task
+          * Method POST
+          * http://localhost:3000/task
+          */
          comun.add = function(task){
            return $http.post('/task', task)
            .success(function(task){
@@ -39,16 +47,24 @@ angular.module('appTareas', ['ui.router'])
            })
          }
 
-         //Update task
+         /**
+          * Method Update Task
+          * Method PUT
+          * http://localhost:3000/task/575b44ae9c3bf1632cedda08
+          */
          comun.update = function(task){
            return $http.put('/task/' + task._id, task)
            .success(function(data){
              var index = comun.tasks.indexOf(task);
-             comun.tasks[index] = data;//Update datas
+             comun.tasks[index] = data;//Update data
            })
          }
 
-         //Delete task
+         /**
+          * Method DELETE Task
+          * Method DELETE
+          * http://localhost:3000/task/575b44ae9c3bf1632cedda08
+          */
          comun.delete = function(task){
            return $http.delete('/task/' + task._id)
            .success(function(){
@@ -59,6 +75,7 @@ angular.module('appTareas', ['ui.router'])
 
         return comun;
     })
+
     .controller('ctrlAlta', function($scope, $state, comun) {
         $scope.task = {}
 
@@ -66,6 +83,7 @@ angular.module('appTareas', ['ui.router'])
 
         $scope.tasks = comun.tasks;
 
+        //Array with my priorities
         $scope.priorityes = ['Low', 'Normal', 'High'];
 
         //function add new task for my list
@@ -76,8 +94,8 @@ angular.module('appTareas', ['ui.router'])
                   priority: parseInt($scope.task.priority)
               })
               //Empty fields
-              $scope.task.name = '';
-              $scope.task.priority = '';
+              $scope.task.name = "";
+              $scope.task.priority = "";
         }
 
         //More priority
@@ -101,7 +119,7 @@ angular.module('appTareas', ['ui.router'])
           $state.go('editar');
         }
 
-
+        //Priorities of the tasks options
         $scope.option = [{
           name: "Low",
           value: 0,
@@ -114,6 +132,7 @@ angular.module('appTareas', ['ui.router'])
         }];
 
     })
+
     .controller('ctrlEditar', function($scope, $state, comun) {
         $scope.task = comun.task;
 
